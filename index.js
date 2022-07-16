@@ -3,21 +3,27 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-const config = require('./config/key');
+const config = require('./server/config/key');
 
-const {User} = require('./models/user');
+const {User} = require('./server/models/user');
+const { application } = require('express');
 
 //MiddleWare
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-const port = 3000;
+const port = 5000;
 mongoose.connect(config.mongoURI).then(() => {
     console.log('MongoDB Connected...');
 }).catch(err => console.log(err));
 
 app.get('/', (req, res) => {
     res.send('Hello World!!!!!!!');
+});
+
+app.get('/api/hello', (req, res) => {
+
+    res.json('OKAY');
 });
 
 app.post('/register', (req, res) => {
