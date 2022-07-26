@@ -1,11 +1,10 @@
 import React from 'react';
-// import ReactDOM from 'react-dom/client';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'antd/dist/antd.min.css';
-import {provider} from 'react-redux';
+import {Provider} from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
@@ -15,14 +14,14 @@ const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)
 const root = createRoot(document.getElementById('root'));
 
 root.render(
-  <provider
-   store = {createStoreWithMiddleware(Reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__&&
-    window.__REDUX_DEVTOOLS_EXTENSION__()
+  <Provider
+    store = {createStoreWithMiddleware(Reducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__&&
+      window.__REDUX_DEVTOOLS_EXTENSION__()
     )}
   >
      <App/>
-  </provider>);
+  </Provider>);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
